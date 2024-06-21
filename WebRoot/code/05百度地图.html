@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>玩转西安</title>
+    <!-- 1.js文件 -->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=slRG9F2Usgfvltq2XdcVXiMGoMB7ew3H"></script>
+<!--     之前的头部文件 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="keywords"
+      content="Transit Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"
+    />
+    <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/lightbox.css" />
+    
+    <!-- 在这里新加特效 -->
+    <link rel="stylesheet" type="text/css" href="font_svcu02nytc/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/photoshi.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+      jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+          event.preventDefault();
+          $("html,body").animate(
+            { scrollTop: $(this.hash).offset().top },
+            1000
+          );
+        });
+      });
+    </script>		
+    
+</head>
+<body>
+<div class="banner a-banner">
+      <!-- container -->
+      <div class="container">
+        <div class="header">
+          <div class="logo">
+            <a href="index1.html">玩转西安</a>
+          </div>
+          <div class="icons">
+            <ul>
+              <li><a href="#" class="facebook"> </a></li>
+              <li><a href="#" class="facebook twitter"> </a></li>
+              <li><a href="#" class="facebook chrome"> </a></li>
+              <li><a href="#" class="facebook dribbble"> </a></li>
+            </ul>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="top-nav">
+          <span class="menu">菜单</span>
+          <ul class="nav1">
+						<li><a href="index1.html">简介</a></li>
+						<li><a href="rank.html">榜单</a></li>
+						<li><a href="silk.html" class="active">锦囊</a></li>
+						<!--<li><a href="question.html">问答</a></li> -->
+	<!-- 这里为之前的不太确定这种实现方式是否正确 	<li><a href="#news" class="scroll">公告</a></li> -->
+						<!--<li><a href="contact.html">游记</a></li>-->
+						<li><a href="travels.html">游记</a></li>
+						<li><a href="explore.html">探索</a></li>
+<!-- 						<li><a href="hotel.html">酒店</a></li> -->
+						<li><a href="index.action">论坛</a></li>
+					</ul>
+          <!-- script-for-menu -->
+          <script>
+            $("span.menu").click(function () {
+              $("ul.nav1").slideToggle(300, function () {
+                // Animation complete.
+              });
+            });
+          </script>
+          <!-- /script-for-menu -->
+        </div>
+      </div>
+      <!-- //container -->
+    </div>
+    
+    <div class="head">
+				<div class="banner">
+					<div><img src="images/sb1.png"></div>
+					<div><img src="images/sb2.png"></div>
+					<div><img src="images/sb3.png"></div>
+					<div><img src="images/sb4.png"></div>
+					<div><img src="images/sb5.png"></div>
+					<div><img src="images/sb6.png"></div>
+				</div>
+				<ul class="lrbutton">
+					<li>&lt;</li>
+					<li>&gt;</li>
+				</ul>
+				<ul class="smallbutton">
+					<li style="list-style-type: none;"></li>
+					<li style="list-style-type: none;"></li>
+					<li style="list-style-type: none;"></li>
+					<li style="list-style-type: none;"></li>
+					<li style="list-style-type: none;"></li>
+					<li style="list-style-type: none;"></li>
+				</ul>
+		</div>
+		
+    <!-- 2.容器 -->
+    <div id="container" style="width:1200px;height:500px;"></div>
+
+    <!-- 3.插入地图显示 -->
+    <script>
+        //1.创建地图实例
+        var map = new BMap.Map("container");
+        //2.设置中心点坐标
+        var point = new BMap.Point(108.953509,34.265619);
+        
+      //2-1.设置吃饭坐标
+        var eat1 = new BMap.Point(108.939262,34.266687);//老李家羊肉泡馍
+        var eat2 = new BMap.Point(108.99986,34.29626);//李老三肉丸糊辣汤
+        var eat3 = new BMap.Point(108.969666,34.280155);//魏家凉皮(解放路店)
+        var eat4 = new BMap.Point(108.976196,34.205478);//窄巷子陕菜馆(曲江店)
+        var eat5 = new BMap.Point(108.945221,34.209546);//杨翔豆皮涮牛肚(朱雀大街店)
+        var eat6 = new BMap.Point(108.952996,34.25179);//老李家biangbiang面
+        var eat7 = new BMap.Point(108.959846,34.340059);//尚寨嫽扎咧(凤城六路店)
+        var eat8 = new BMap.Point(108.946519,34.366367);//悦香驴蹄子面(凤城十二路店)
+        var eat9 = new BMap.Point(108.978539,34.254731);//澄城崇斌水盆羊肉(太乙路店)
+        var eat10 = new BMap.Point(109.004195,34.278666);//张军擀面皮(信和路店)
+        
+      //2-1.设置饮品坐标
+        var drink1 = new BMap.Point(108.939277,34.227792);//茶话弄(MOMOPARK店)
+        var drink2 = new BMap.Point(108.958233,34.264188);//八度鲜芒(骡马市店)
+        var drink3 = new BMap.Point(108.897704,34.235666);//古茗(禾盛京广中心店)
+        var drink4 = new BMap.Point(108.924061,34.290479);// 鹿角巷TheAlley
+        var drink5 = new BMap.Point(108.953509,34.265619);//米旗西饼店(三桥建章路店)
+        
+        
+      //2-1.设置游玩坐标
+        var play1 = new BMap.Point(108.990011,34.260013);//兴庆宫公园
+        var play2 = new BMap.Point(109.036301,34.215163);//西安植物园
+        var play3 = new BMap.Point(108.98696,34.221386);//曲江海洋极地公园
+        var play4 = new BMap.Point(109.067589,34.328862);//西安世博园
+        var play5 = new BMap.Point(108.980724,34.218949);//大唐芙蓉园
+
+        //3.地图初始化，同时设置地图展示级别
+        map.centerAndZoom(point, 12);  //3-19
+      //4.开启鼠标滚轮缩放
+        map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+      //5.平移缩放控件	NavigationControl 
+        map.addControl(new BMap.NavigationControl())
+        //缩略地图	OverviewMapControl
+        map.addControl(new BMap.OverviewMapControl())
+        //比例尺	ScaleControl
+        map.addControl(new BMap.ScaleControl())
+        //地图类型	MapTypeControl
+        map.addControl(new BMap.MapTypeControl())
+        //6.标注
+        //表示地图上的点，可自定义标注的图标
+
+        //自定义icon类
+        var myIcon1 = new BMap.Icon("img/noodle.png", new BMap.Size(100, 100))
+        var myIcon2 = new BMap.Icon("img/drink.png", new BMap.Size(100, 100))
+        var myIcon3 = new BMap.Icon("img/play.png", new BMap.Size(100, 100))
+        
+        // 创建吃饭标注
+        var marker1 = new BMap.Marker(eat1, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker1);                     // 将标注添加到地图中
+        var marker2 = new BMap.Marker(eat2, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker2);
+        var marker3 = new BMap.Marker(eat3, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker3);                     // 将标注添加到地图中
+        var marker4 = new BMap.Marker(eat4, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker4);
+        var marker5 = new BMap.Marker(eat5, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker5);                     // 将标注添加到地图中
+        var marker6 = new BMap.Marker(eat6, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker6);
+        var marker7 = new BMap.Marker(eat7, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker7);                     // 将标注添加到地图中
+        var marker8 = new BMap.Marker(eat8, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker8);
+        var marker9 = new BMap.Marker(eat9, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker9);                     // 将标注添加到地图中
+        var marker10 = new BMap.Marker(eat10, {icon: myIcon1});        // 创建标注 
+        map.addOverlay(marker10);
+        // 将标注添加到地图中
+        //监听事件--点击marker --- marker.addEventListener("click", function(){   }) 
+        //marker.onclick=function(){
+            //alert('点击了marker')
+        //}
+        
+        // 创建饮料标注
+        var marker11 = new BMap.Marker(drink1, {icon: myIcon2});        // 创建标注 
+        map.addOverlay(marker11);                     // 将标注添加到地图中
+        var marker22 = new BMap.Marker(drink2, {icon: myIcon2});        // 创建标注 
+        map.addOverlay(marker22);
+        var marker33 = new BMap.Marker(drink3, {icon: myIcon2});        // 创建标注 
+        map.addOverlay(marker33);                     // 将标注添加到地图中
+        var marker44 = new BMap.Marker(drink4, {icon: myIcon2});        // 创建标注 
+        map.addOverlay(marker44);
+        var marker55 = new BMap.Marker(drink5, {icon: myIcon2});        // 创建标注 
+        map.addOverlay(marker55);
+        // 创建游玩标注
+        var marker111 = new BMap.Marker(play1, {icon: myIcon3});        // 创建标注 
+        map.addOverlay(marker111);
+        var marker222 = new BMap.Marker(play2, {icon: myIcon3});        // 创建标注 
+        map.addOverlay(marker222);                     // 将标注添加到地图中
+        var marker333 = new BMap.Marker(play3, {icon: myIcon3});        // 创建标注 
+        map.addOverlay(marker333);
+        var marker444 = new BMap.Marker(play4, {icon: myIcon3});        // 创建标注 
+        map.addOverlay(marker444);                     // 将标注添加到地图中
+        var marker555 = new BMap.Marker(play5, {icon: myIcon3});        // 创建标注 
+        map.addOverlay(marker555); 
+        
+      //7.吃饭信息窗口
+        var opts1={
+            width:200,
+            height:200,
+            title:'老李家羊肉泡馍'
+        }
+        var opts2={
+                width:200,
+                height:200,
+                title:'李老三肉丸糊辣汤'
+            }
+        var opts3={
+                width:200,
+                height:200,
+                title:'魏家凉皮(解放路店)'
+            }
+        var opts4={
+                width:200,
+                height:200,
+                title:'窄巷子陕菜馆(曲江店)'
+            }
+        var opts5={
+                width:200,
+                height:200,
+                title:'杨翔豆皮涮牛肚(朱雀大街店)'
+            }
+        var opts6={
+                width:200,
+                height:200,
+                title:'老李家biangbiang面'
+            }
+        var opts7={
+                width:200,
+                height:200,
+                title:'尚寨嫽扎咧(凤城六路店)'
+            }
+        var opts8={
+                width:200,
+                height:200,
+                title:'悦香驴蹄子面(凤城十二路店)'
+            }
+        var opts9={
+                width:200,
+                height:200,
+                title:'澄城崇斌水盆羊肉(太乙路店)'
+            }
+        var opts10={
+                width:200,
+                height:200,
+                title:'张军擀面皮(信和路店)'
+            }
+      
+      //7.饮品信息窗口
+        var opts11={
+            width:200,
+            height:200,
+            title:'茶话弄(MOMOPARK店)'
+        }
+        var opts22={
+                width:200,
+                height:200,
+                title:'八度鲜芒(骡马市店)'
+            }
+        var opts33={
+                width:200,
+                height:200,
+                title:'古茗(禾盛京广中心店)'
+            }
+        var opts44={
+                width:200,
+                height:200,
+                title:'鹿角巷TheAlley'
+            }
+        var opts55={
+                width:200,
+                height:200,
+                title:'米旗西饼店(三桥建章路店)'
+            }
+      
+      //7.游玩信息窗口
+        var opts111={
+            width:200,
+            height:200,
+            title:'兴庆宫公园'
+        }
+        var opts222={
+                width:200,
+                height:200,
+                title:'西安植物园'
+            }
+        var opts333={
+                width:200,
+                height:200,
+                title:'曲江海洋极地公园'
+            }
+        var opts444={
+                width:200,
+                height:200,
+                title:'西安世博园'
+            }
+        var opts555={
+                width:200,
+                height:200,
+                title:'大唐芙蓉园'
+            }
+      
+        //创建吃饭信息窗口
+        var content1='<ul><li>西安市莲湖区大麦市街金桥公寓</li>'
+        var infoWindow1=new BMap.InfoWindow(content1,opts1);
+        //在地图上打开  窗口和位置
+        // map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+        //map.openInfoWindow(infoWindow, point);      // 打开信息窗口
+        //点击marker标注，打开信息窗口
+        marker1.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow1,eat1);
+        })
+        
+         var content2='<ul><li>西安市新城区含元路彩云郡东南侧约180米</li>'
+        var infoWindow2=new BMap.InfoWindow(content2,opts2);
+        marker2.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow2,eat2);
+        })
+        
+        var content3='<ul><li>解放路177号</li>'
+        var infoWindow3=new BMap.InfoWindow(content3,opts3);
+        marker3.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow3,eat3);
+        })
+        var content4='<ul><li>地址：西安市曲江新区庙坡头路858号</li><li>电话：(029)89315077</li>'
+        var infoWindow4=new BMap.InfoWindow(content4,opts4);
+        marker4.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow4,eat4);
+        })
+        
+        var content5='<ul><li>地址：雁塔区朱雀大街南段52号</li><li>电话：(029)85224475</li>'
+        var infoWindow5=new BMap.InfoWindow(content5,opts5);
+        marker5.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow5,eat5);
+        })
+        
+        var content6='<ul><li>南关正街新西里1单元1层1号</li>'
+        var infoWindow6=new BMap.InfoWindow(content6,opts6);
+        marker6.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow6,eat6);
+        })
+        
+        var content7='<ul><li>地址：西安市未央区开元路麟凤尊汇西南侧约50米</li><li>电话：(029)86215818</li>'
+        var infoWindow7=new BMap.InfoWindow(content7,opts7);
+        marker7.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow7,eat7);
+        })
+        
+        var content8='<ul><li>西安市未央区文景路星程酒店(西安北客站店)南侧</li><li>电话：(029)86217014,18740461052</li>'
+        var infoWindow8=new BMap.InfoWindow(content8,opts8);
+        marker8.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow8,eat8);
+        })
+        
+        var content9='<ul><li>地址：陕西省西安市碑林区安西街16号楼</li>'
+        var infoWindow9=new BMap.InfoWindow(content9,opts9);
+        marker9.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow9,eat9);
+        })
+        
+        var content10='<ul><li>地址：陕西省西安市新城区信合路八一楼二单元一层西户</li><li>电话：13571913913</li>'
+        var infoWindow10=new BMap.InfoWindow(content10,opts10);
+        marker10.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow10,eat10);
+        })
+        
+        //创建饮料信息窗口
+        var content11='<ul><li>地址：西安市雁塔区小寨西路232号置地时代momopapk购物中心F4</li>'
+        var infoWindow11=new BMap.InfoWindow(content11,opts11);
+        //在地图上打开  窗口和位置
+        // map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+        //map.openInfoWindow(infoWindow, point);      // 打开信息窗口
+        //点击marker标注，打开信息窗口
+        marker11.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow11,drink1);
+        })
+        
+         var content22='<ul><li>地址：西安市碑林区骡马市商业步行街兴正元购物广场(东大街店)东南侧</li><li>电话：18992421806</li>'
+        var infoWindow22=new BMap.InfoWindow(content22,opts22);
+        marker22.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow22,drink2);
+        })
+        
+        var content33='<ul><li>地址：唐延路禾盛京广中心负一层</li><li>电话：(029)88228457,13324533971</li>'
+        var infoWindow33=new BMap.InfoWindow(content33,opts33);
+        marker33.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow33,drink3);
+        })
+        var content44='<ul><li>地址：西安市莲湖区星火路22号老城根Gpark商业街区1F-43b</li><li>电话：(029)87973177</li>'
+        var infoWindow44=new BMap.InfoWindow(content44,opts44);
+        marker44.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow44,drink4);
+        })
+        
+        var content55='<ul><li>地址：未央区三桥建章路南段49号</li><li>电话：(029)89110724</li>'
+        var infoWindow55=new BMap.InfoWindow(content55,opts55);
+        marker55.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow55,drink5);
+        })
+        
+        //创建游玩信息窗口
+        var content111='<ul><li>地址：陕西省西安市碑林区咸宁西路55号</li><li>电话：(029)82485349</li>'
+        var infoWindow111=new BMap.InfoWindow(content111,opts111);
+        //在地图上打开  窗口和位置
+        // map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
+        //map.openInfoWindow(infoWindow, point);      // 打开信息窗口
+        //点击marker标注，打开信息窗口
+        marker111.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow111,play1);
+        })
+        
+         var content222='<ul><li>地址：陕西省西安市雁塔区南三环路</li>'
+        var infoWindow222=new BMap.InfoWindow(content222,opts222);
+        marker222.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow222,play2);
+        })
+        
+        var content333='<ul><li>地址：西安市雁塔区曲江二路1号</li>'
+        var infoWindow333=new BMap.InfoWindow(content333,opts333);
+        marker333.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow333,play3);
+        })
+        var content444='<ul><li>地址：世博大道1号</li>'
+        var infoWindow444=new BMap.InfoWindow(content444,opts444);
+        marker444.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow444,play4);
+        })
+        
+        var content555='<ul><li>地址：西安市雁塔区曲江新区芙蓉西路99号</li>'
+        var infoWindow555=new BMap.InfoWindow(content555,opts5);
+        marker555.addEventListener('click',function(){
+        	map.openInfoWindow(infoWindow555,play5);
+        })
+    </script>
+    
+</body>
+</html>
